@@ -15,7 +15,7 @@ export default function MatchesPage() {
         id: 1,
         opponent: "Chennai Super Kings",
         opponentLogo: "/placeholder.svg?height=60&width=60",
-        date: "April 12, 2023",
+        date: "April 12, 2025",
         time: "7:30 PM IST",
         venue: "Wankhede Stadium, Mumbai",
         ticketsAvailable: true,
@@ -24,7 +24,7 @@ export default function MatchesPage() {
         id: 2,
         opponent: "Royal Challengers Bangalore",
         opponentLogo: "/placeholder.svg?height=60&width=60",
-        date: "April 16, 2023",
+        date: "April 16, 2025",
         time: "3:30 PM IST",
         venue: "M. Chinnaswamy Stadium, Bangalore",
         ticketsAvailable: true,
@@ -33,7 +33,7 @@ export default function MatchesPage() {
         id: 3,
         opponent: "Delhi Capitals",
         opponentLogo: "/placeholder.svg?height=60&width=60",
-        date: "April 20, 2023",
+        date: "April 20, 2025",
         time: "7:30 PM IST",
         venue: "Wankhede Stadium, Mumbai",
         ticketsAvailable: false,
@@ -42,7 +42,7 @@ export default function MatchesPage() {
         id: 4,
         opponent: "Kolkata Knight Riders",
         opponentLogo: "/placeholder.svg?height=60&width=60",
-        date: "April 24, 2023",
+        date: "April 24, 2025",
         time: "7:30 PM IST",
         venue: "Eden Gardens, Kolkata",
         ticketsAvailable: true,
@@ -51,7 +51,7 @@ export default function MatchesPage() {
         id: 5,
         opponent: "Rajasthan Royals",
         opponentLogo: "/placeholder.svg?height=60&width=60",
-        date: "April 30, 2023",
+        date: "April 30, 2025",
         time: "3:30 PM IST",
         venue: "Wankhede Stadium, Mumbai",
         ticketsAvailable: true,
@@ -62,7 +62,7 @@ export default function MatchesPage() {
         id: 101,
         opponent: "Gujarat Titans",
         opponentLogo: "/placeholder.svg?height=60&width=60",
-        date: "March 31, 2023",
+        date: "March 31, 2025",
         result: "Won by 6 wickets",
         miScore: "172/4 (19.2 overs)",
         opponentScore: "168/6 (20 overs)",
@@ -73,7 +73,7 @@ export default function MatchesPage() {
         id: 102,
         opponent: "Sunrisers Hyderabad",
         opponentLogo: "/placeholder.svg?height=60&width=60",
-        date: "April 4, 2023",
+        date: "April 4, 2025",
         result: "Lost by 3 runs",
         miScore: "189/8 (20 overs)",
         opponentScore: "192/6 (20 overs)",
@@ -84,7 +84,7 @@ export default function MatchesPage() {
         id: 103,
         opponent: "Punjab Kings",
         opponentLogo: "/placeholder.svg?height=60&width=60",
-        date: "April 8, 2023",
+        date: "April 8, 2025",
         result: "Won by 8 wickets",
         miScore: "157/2 (17.4 overs)",
         opponentScore: "156/8 (20 overs)",
@@ -102,7 +102,7 @@ export default function MatchesPage() {
           <div className="container px-4 md:px-6 text-center">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Match Schedule</h1>
             <p className="mx-auto max-w-[700px] mt-4 text-gray-200 md:text-xl">
-              Stay updated with Mumbai Indians match schedule and results for the IPL 2023 season.
+              Stay updated with Mumbai Indians match schedule and results for the IPL 2025 season.
             </p>
           </div>
         </section>

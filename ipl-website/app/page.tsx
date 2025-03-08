@@ -34,9 +34,16 @@ export default function Home() {
                   <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
                     Match Schedule
                   </Button>
-                  <Button variant="outline" size="lg" className="text-white border-white hover:bg-blue-800">
-                    Watch Highlights
-                  </Button>
+                  <Button
+  variant="outline"
+  size="lg"
+  className="text-white border-white bg-[#1e40af] hover:bg-[#1e40af] hover:text-white"
+>
+  Watch Highlights
+</Button>
+
+
+
                 </div>
               </div>
               <div className="mx-auto flex items-center justify-center">
@@ -63,13 +70,14 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex">
-                <Link
-                  href="/team"
-                  className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
-                >
-                  Meet Our Team
-                </Link>
-              </div>
+  <Link
+    href="/team"
+    className="inline-flex h-10 items-center justify-center rounded-md bg-[#0078bc] px-8 text-sm font-medium text-white shadow transition-colors hover:bg-[#006aa1]"
+  >
+    Meet Our Team
+  </Link>
+</div>
+
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 mt-8">
   {/* IPL Titles Card */}
@@ -361,9 +369,10 @@ export default function Home() {
                           className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                         />
                       </div>
-                      <Button type="submit" className="w-full">
-                        Subscribe
-                      </Button>
+                      <Button type="submit" className="w-full bg-[#0078bc] text-white">
+  Subscribe
+</Button>
+
                     </form>
                   </CardContent>
                   <CardFooter className="flex flex-col items-start gap-2">

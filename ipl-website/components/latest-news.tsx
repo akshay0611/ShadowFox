@@ -8,11 +8,11 @@ export default function LatestNews() {
   const newsItems = [
     {
       id: 1,
-      title: "Mumbai Indians announce squad for IPL 2023",
+      title: "Mumbai Indians announce squad for IPL 2025",
       excerpt:
         "The five-time champions have announced their squad for the upcoming IPL season with some exciting new additions.",
       image: "/placeholder.svg?height=200&width=400",
-      date: "March 25, 2023",
+      date: "March 25, 2025",
       category: "Team News",
     },
     {
@@ -21,7 +21,7 @@ export default function LatestNews() {
       excerpt:
         "The team has been training rigorously at Wankhede Stadium ahead of their first match against Chennai Super Kings.",
       image: "/placeholder.svg?height=200&width=400",
-      date: "March 28, 2023",
+      date: "March 28, 2025",
       category: "Training",
     },
     {
@@ -30,7 +30,7 @@ export default function LatestNews() {
       excerpt:
         "After recovering from an injury, our star all-rounder is fit and ready to make a strong comeback this season.",
       image: "/placeholder.svg?height=200&width=400",
-      date: "March 30, 2023",
+      date: "March 30, 2025",
       category: "Player News",
     },
   ]

@@ -7,10 +7,11 @@ export default function Footer() {
       <div className="container px-4 md:px-6">
         <div className="grid gap-8 md:grid-cols-4">
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <Image src="/mumbai-indians-logo.svg" alt="Mumbai Indians Logo" width={40} height={40} />
-              <span className="text-xl font-bold">Mumbai Indians</span>
-            </div>
+          <div className="flex justify-center items-center pl-4">
+  <Image src="/mumbai-indians-logo.svg" alt="Mumbai Indians Logo" width={80} height={80} />
+</div>
+
+
             <p className="text-sm text-muted-foreground">
               The most successful team in IPL history with 5 championship titles.
             </p>
