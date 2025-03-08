@@ -17,7 +17,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 text-white">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 text-white flex justify-center items-center">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12">
               <div className="flex flex-col justify-center space-y-4">
@@ -59,7 +59,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full py-12 md:py-24">
+        <section className="w-full py-12 md:py-24 flex justify-center items-center">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
               <div className="flex-1 space-y-4">
@@ -127,7 +127,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full py-12 bg-muted">
+        <section className="w-full py-12 bg-muted flex justify-center items-center">
           <div className="container px-4 md:px-6">
             <Tabs defaultValue="upcoming" className="w-full">
               <div className="flex items-center justify-between">
@@ -151,7 +151,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full py-12 md:py-24">
+        <section className="w-full py-12 md:py-24 flex justify-center items-center">
   <div className="container px-4 md:px-6">
     <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       <div className="col-span-full lg:col-span-1">
@@ -216,7 +216,7 @@ export default function Home() {
   </div>
 </section>
 
-        <section className="w-full py-12 bg-blue-900 text-white">
+        <section className="w-full py-12 bg-blue-900 text-white flex justify-center items-center">
           <div className="container px-4 md:px-6">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="space-y-4">
@@ -295,7 +295,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full py-12 md:py-24">
+        <section className="w-full py-12 md:py-24 flex justify-center items-center">
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-[1fr_400px]">
               <div className="space-y-4">
