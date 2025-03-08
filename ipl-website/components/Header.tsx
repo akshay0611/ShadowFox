@@ -28,17 +28,17 @@ export default function Header() {
 
 
 
-        <nav className="hidden md:flex items-center gap-8">
-          {["Home", "Team", "Matches", "Stats", "News", "Fan Zone"].map((item, index) => (
-            <Link
-              key={index}
-              href={`/${item.toLowerCase().replace(" ", "-")}`}
-              className="text-base font-medium text-gray-700 transition duration-300 hover:text-[#0078bc]"
-            >
-              {item}
-            </Link>
-          ))}
-        </nav>
+<nav className="hidden md:flex items-center gap-8">
+  {["Home", "Team", "Matches", "Stats", "News", "Fan Zone"].map((item, index) => (
+    <Link
+      key={index}
+      href={item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "-")}`}
+      className="text-base font-medium text-gray-700 transition duration-300 hover:text-[#0078bc]"
+    >
+      {item}
+    </Link>
+  ))}
+</nav>
 
       
         <div className="flex items-center gap-4">
