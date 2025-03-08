@@ -13,9 +13,9 @@ export default function Header() {
   <Image
     src="/mumbai-indians-logo.svg"
     alt="Mumbai Indians Logo"
-    width={64} 
-    height={64} 
-    className="h-16 w-16"
+    width={50} 
+    height={50} 
+    className="h-14 w-14"
   />
   <Link
     href="/"
