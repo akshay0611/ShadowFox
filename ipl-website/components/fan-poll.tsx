@@ -78,15 +78,15 @@ export default function FanPoll() {
           <div className="text-sm text-center text-blue-200">Total votes: {totalVotes + 1}</div>
 
           <Button
-            variant="outline"
-            onClick={() => {
-              setHasVoted(false)
-              setSelectedOption(null)
-            }}
-            className="w-full border-white text-white hover:bg-blue-800"
-          >
-            Back to Poll
-          </Button>
+  variant="outline"
+  onClick={() => {
+    setHasVoted(false);
+    setSelectedOption(null);
+  }}
+  className="w-full border-white text-white bg-transparent hover:bg-blue-800 hover:text-white"
+>
+  Back to Poll
+</Button>
         </div>
       )}
     </div>
