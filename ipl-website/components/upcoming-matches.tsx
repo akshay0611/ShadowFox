@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
 export default function UpcomingMatches() {
-
   const upcomingMatches = [
     {
       id: 1,
@@ -45,9 +44,24 @@ export default function UpcomingMatches() {
               <div className="p-6">
                 <div className="flex items-center flex-wrap gap-4 mb-4">
                   <div className="flex items-center">
-                    <Image src="/mumbai-indians-logo.svg" alt="Mumbai Indians" width={60} height={60} />
+                    {/* Mumbai Indians Logo */}
+                    <Image
+                      src="/mumbai-indians-logo.svg"
+                      alt="Mumbai Indians"
+                      width={60}
+                      height={60}
+                      className="object-contain"
+                    />
                     <span className="mx-3 text-xl font-bold">VS</span>
-                    <Image src={match.opponentLogo || "/placeholder.svg"} alt={match.opponent} width={60} height={60} />
+                    {/* Opponent Logo */}
+                    <div className="relative w-[80px] h-[80px]">
+                      <Image
+                        src={match.opponentLogo || "/placeholder.svg"}
+                        alt={match.opponent}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
                   </div>
                   <h3 className="text-lg font-bold">Mumbai Indians vs {match.opponent}</h3>
                 </div>
@@ -89,4 +103,3 @@ export default function UpcomingMatches() {
     </div>
   )
 }
-
