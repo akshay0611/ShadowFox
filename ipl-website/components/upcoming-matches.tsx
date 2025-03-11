@@ -5,12 +5,12 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
 export default function UpcomingMatches() {
-  // Sample upcoming matches data
+
   const upcomingMatches = [
     {
       id: 1,
       opponent: "Chennai Super Kings",
-      opponentLogo: "/placeholder.svg?height=60&width=60",
+      opponentLogo: "/Chennai_Super_Kings_Logo.svg.png",
       date: "April 12, 2025",
       time: "7:30 PM IST",
       venue: "Wankhede Stadium, Mumbai",
@@ -19,7 +19,7 @@ export default function UpcomingMatches() {
     {
       id: 2,
       opponent: "Royal Challengers Bangalore",
-      opponentLogo: "/placeholder.svg?height=60&width=60",
+      opponentLogo: "/rcb_logo.png",
       date: "April 16, 2025",
       time: "3:30 PM IST",
       venue: "M. Chinnaswamy Stadium, Bangalore",
@@ -28,7 +28,7 @@ export default function UpcomingMatches() {
     {
       id: 3,
       opponent: "Delhi Capitals",
-      opponentLogo: "/placeholder.svg?height=60&width=60",
+      opponentLogo: "/Delhi_Capitals.svg.png",
       date: "April 20, 2025",
       time: "7:30 PM IST",
       venue: "Wankhede Stadium, Mumbai",
