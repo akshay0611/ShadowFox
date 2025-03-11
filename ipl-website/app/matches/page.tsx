@@ -14,7 +14,7 @@ export default function MatchesPage() {
       {
         id: 1,
         opponent: "Chennai Super Kings",
-        opponentLogo: "/placeholder.svg?height=60&width=60",
+        opponentLogo: "/Chennai_Super_Kings_Logo.svg.png?height=60&width=60",
         date: "April 12, 2025",
         time: "7:30 PM IST",
         venue: "Wankhede Stadium, Mumbai",
@@ -23,7 +23,7 @@ export default function MatchesPage() {
       {
         id: 2,
         opponent: "Royal Challengers Bangalore",
-        opponentLogo: "/placeholder.svg?height=60&width=60",
+        opponentLogo: "/rcb_logo.png?height=60&width=60",
         date: "April 16, 2025",
         time: "3:30 PM IST",
         venue: "M. Chinnaswamy Stadium, Bangalore",
@@ -32,7 +32,7 @@ export default function MatchesPage() {
       {
         id: 3,
         opponent: "Delhi Capitals",
-        opponentLogo: "/placeholder.svg?height=60&width=60",
+        opponentLogo: "/Delhi_Capitals.svg.png?height=60&width=60",
         date: "April 20, 2025",
         time: "7:30 PM IST",
         venue: "Wankhede Stadium, Mumbai",
@@ -41,7 +41,7 @@ export default function MatchesPage() {
       {
         id: 4,
         opponent: "Kolkata Knight Riders",
-        opponentLogo: "/placeholder.svg?height=60&width=60",
+        opponentLogo: "/Kolkata-Knight-Riders-Logo.png?height=60&width=60",
         date: "April 24, 2025",
         time: "7:30 PM IST",
         venue: "Eden Gardens, Kolkata",
@@ -50,7 +50,7 @@ export default function MatchesPage() {
       {
         id: 5,
         opponent: "Rajasthan Royals",
-        opponentLogo: "/placeholder.svg?height=60&width=60",
+        opponentLogo: "/Rajasthan-Royals-Logo.png?height=60&width=60",
         date: "April 30, 2025",
         time: "3:30 PM IST",
         venue: "Wankhede Stadium, Mumbai",
@@ -61,7 +61,7 @@ export default function MatchesPage() {
       {
         id: 101,
         opponent: "Gujarat Titans",
-        opponentLogo: "/placeholder.svg?height=60&width=60",
+        opponentLogo: "/Gujarat_Titans_Logo.svg.png?height=60&width=60",
         date: "March 31, 2025",
         result: "Won by 6 wickets",
         miScore: "172/4 (19.2 overs)",
@@ -72,7 +72,7 @@ export default function MatchesPage() {
       {
         id: 102,
         opponent: "Sunrisers Hyderabad",
-        opponentLogo: "/placeholder.svg?height=60&width=60",
+        opponentLogo: "/Sunrisers_Hyderabad_Logo.svg.png?height=60&width=60",
         date: "April 4, 2025",
         result: "Lost by 3 runs",
         miScore: "189/8 (20 overs)",
@@ -83,7 +83,7 @@ export default function MatchesPage() {
       {
         id: 103,
         opponent: "Punjab Kings",
-        opponentLogo: "/placeholder.svg?height=60&width=60",
+        opponentLogo: "/Punjab_Kings_Logo.svg.png?height=60&width=60",
         date: "April 8, 2025",
         result: "Won by 8 wickets",
         miScore: "157/2 (17.4 overs)",
