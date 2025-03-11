@@ -70,7 +70,7 @@ export default function Footer() {
         </div>
         <div className="mt-8 border-t pt-8 flex flex-col md:flex-row justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Mumbai Indians. All rights reserved.
+          Made with ❤️ by Akshay
           </p>
           <p className="text-xs text-muted-foreground">
             Mumbai Indians and the Mumbai Indians logo are registered trademarks of Mumbai Indians Cricket Private
