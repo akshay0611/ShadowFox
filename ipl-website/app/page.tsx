@@ -10,7 +10,7 @@ import UpcomingMatches from "@/components/upcoming-matches"
 import LatestNews from "@/components/latest-news"
 import TeamHighlights from "@/components/team-highlights"
 import FanPoll from "@/components/fan-poll"
-import { Twitter, Facebook, Instagram, Youtube , Trophy,} from "lucide-react"; // Import Lucide icons
+import { Twitter, Facebook, Instagram, Youtube , Trophy,} from "lucide-react"; 
 
 export default function Home() {
   return (
@@ -80,9 +80,9 @@ export default function Home() {
 
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 mt-8">
-  {/* IPL Titles Card */}
+
   <Card className="flex flex-col items-center text-center p-4">
-    <Trophy className="h-20 w-20 mb-4 text-yellow-500" /> {/* Trophy icon */}
+    <Trophy className="h-20 w-20 mb-4 text-yellow-500" /> 
     <CardHeader className="p-0">
       <CardTitle className="text-xl">5 IPL Titles</CardTitle>
     </CardHeader>
@@ -91,7 +91,7 @@ export default function Home() {
     </CardContent>
   </Card>
 
-  {/* Wankhede Fortress Card */}
+
   <Card className="flex flex-col items-center text-center p-4">
   <HomeIcon className="h-20 w-20 mb-4 text-blue-500" /> 
     <CardHeader className="p-0">
@@ -102,9 +102,9 @@ export default function Home() {
     </CardContent>
   </Card>
 
-  {/* Star Players Card */}
+
   <Card className="flex flex-col items-center text-center p-4">
-    <Users className="h-20 w-20 mb-4 text-green-500" /> {/* Users icon */}
+    <Users className="h-20 w-20 mb-4 text-green-500" /> 
     <CardHeader className="p-0">
       <CardTitle className="text-xl">Star Players</CardTitle>
     </CardHeader>
@@ -113,9 +113,9 @@ export default function Home() {
     </CardContent>
   </Card>
 
-  {/* Loyal Paltan Card */}
+
   <Card className="flex flex-col items-center text-center p-4">
-    <Heart className="h-20 w-20 mb-4 text-red-500" /> {/* Heart icon */}
+    <Heart className="h-20 w-20 mb-4 text-red-500" /> 
     <CardHeader className="p-0">
       <CardTitle className="text-xl">Loyal Paltan</CardTitle>
     </CardHeader>
@@ -167,7 +167,7 @@ export default function Home() {
           name: "Rohit Sharma",
           role: "Batsman",
           country: "India",
-          image: "/rohitsharma.avif", // Replace with actual image path
+          image: "/rohitsharma.avif", 
           stats: "5-time IPL Champion, Highest run-scorer for MI",
         },
         {
@@ -175,7 +175,7 @@ export default function Home() {
           name: "Jasprit Bumrah",
           role: "Bowler",
           country: "India",
-          image: "/jaspritbumrah.avif", // Replace with actual image path
+          image: "/jaspritbumrah.avif", 
           stats: "Leading wicket-taker for MI, Best economy rate",
         },
         {
@@ -183,7 +183,7 @@ export default function Home() {
           name: "Suryakumar Yadav",
           role: "Batsman",
           country: "India",
-          image: "/suryakumaryadav.avif", // Replace with actual image path
+          image: "/suryakumaryadav.avif", 
           stats: "Consistent performer, 360-degree batsman",
         },
       ].map((player) => (
@@ -336,7 +336,7 @@ export default function Home() {
     {[2013, 2015, 2017, 2019, 2020].map((year) => (
       <div key={year} className="flex flex-col items-center min-w-[100px]">
         <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-          <Trophy className="h-8 w-8 text-blue-600" /> {/* Use the Trophy icon */}
+          <Trophy className="h-8 w-8 text-blue-600" /> 
         </div>
         <span className="mt-2 font-medium">IPL {year}</span>
       </div>
