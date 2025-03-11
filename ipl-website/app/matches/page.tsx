@@ -4,8 +4,8 @@ import { CalendarDays, Clock, MapPin } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 
 export default function MatchesPage() {
   // Sample matches data
@@ -14,7 +14,7 @@ export default function MatchesPage() {
       {
         id: 1,
         opponent: "Chennai Super Kings",
-        opponentLogo: "/Chennai_Super_Kings_Logo.svg.png?height=60&width=60",
+        opponentLogo: "/Chennai_Super_Kings_Logo.svg.png",
         date: "April 12, 2025",
         time: "7:30 PM IST",
         venue: "Wankhede Stadium, Mumbai",
@@ -23,7 +23,7 @@ export default function MatchesPage() {
       {
         id: 2,
         opponent: "Royal Challengers Bangalore",
-        opponentLogo: "/rcb_logo.png?height=60&width=60",
+        opponentLogo: "/rcb_logo.png",
         date: "April 16, 2025",
         time: "3:30 PM IST",
         venue: "M. Chinnaswamy Stadium, Bangalore",
@@ -32,7 +32,7 @@ export default function MatchesPage() {
       {
         id: 3,
         opponent: "Delhi Capitals",
-        opponentLogo: "/Delhi_Capitals.svg.png?height=60&width=60",
+        opponentLogo: "/Delhi_Capitals.svg.png",
         date: "April 20, 2025",
         time: "7:30 PM IST",
         venue: "Wankhede Stadium, Mumbai",
@@ -41,7 +41,7 @@ export default function MatchesPage() {
       {
         id: 4,
         opponent: "Kolkata Knight Riders",
-        opponentLogo: "/Kolkata-Knight-Riders-Logo.png?height=60&width=60",
+        opponentLogo: "/Kolkata-Knight-Riders-Logo.png",
         date: "April 24, 2025",
         time: "7:30 PM IST",
         venue: "Eden Gardens, Kolkata",
@@ -50,7 +50,7 @@ export default function MatchesPage() {
       {
         id: 5,
         opponent: "Rajasthan Royals",
-        opponentLogo: "/Rajasthan-Royals-Logo.png?height=60&width=60",
+        opponentLogo: "/Rajasthan-Royals-Logo.png",
         date: "April 30, 2025",
         time: "3:30 PM IST",
         venue: "Wankhede Stadium, Mumbai",
@@ -61,35 +61,35 @@ export default function MatchesPage() {
       {
         id: 101,
         opponent: "Gujarat Titans",
-        opponentLogo: "/Gujarat_Titans_Logo.svg.png?height=60&width=60",
+        opponentLogo: "/Gujarat_Titans_Logo.svg.png",
         date: "March 31, 2025",
         result: "Won by 6 wickets",
         miScore: "172/4 (19.2 overs)",
         opponentScore: "168/6 (20 overs)",
         playerOfMatch: "Suryakumar Yadav",
-        venue: "Wankhede Stadium, Mumbai", // Add this line
+        venue: "Wankhede Stadium, Mumbai",
       },
       {
         id: 102,
         opponent: "Sunrisers Hyderabad",
-        opponentLogo: "/Sunrisers_Hyderabad_Logo.svg.png?height=60&width=60",
+        opponentLogo: "/Sunrisers_Hyderabad_Logo.svg.png",
         date: "April 4, 2025",
         result: "Lost by 3 runs",
         miScore: "189/8 (20 overs)",
         opponentScore: "192/6 (20 overs)",
         playerOfMatch: "Heinrich Klaasen",
-        venue: "Wankhede Stadium, Mumbai", // Add this line
+        venue: "Wankhede Stadium, Mumbai",
       },
       {
         id: 103,
         opponent: "Punjab Kings",
-        opponentLogo: "/Punjab_Kings_Logo.svg.png?height=60&width=60",
+        opponentLogo: "/Punjab_Kings_Logo.svg.png",
         date: "April 8, 2025",
         result: "Won by 8 wickets",
         miScore: "157/2 (17.4 overs)",
         opponentScore: "156/8 (20 overs)",
         playerOfMatch: "Jasprit Bumrah",
-        venue: "Wankhede Stadium, Mumbai", // Add this line
+        venue: "Wankhede Stadium, Mumbai",
       },
     ],
   }
@@ -126,13 +126,20 @@ export default function MatchesPage() {
                           <div className="p-6">
                             <div className="flex items-center flex-wrap gap-4 mb-4">
                               <div className="flex items-center">
-                                <Image src="/mumbai-indians-logo.svg" alt="Mumbai Indians" width={60} height={60} />
+                                <Image
+                                  src="/mumbai-indians-logo.svg"
+                                  alt="Mumbai Indians"
+                                  width={60}
+                                  height={60}
+                                  priority
+                                />
                                 <span className="mx-3 text-xl font-bold">VS</span>
                                 <Image
                                   src={match.opponentLogo || "/placeholder.svg"}
                                   alt={match.opponent}
-                                  width={60}
-                                  height={60}
+                                  width={80}
+                                  height={80}
+                                  priority
                                 />
                               </div>
                               <h3 className="text-lg font-bold">Mumbai Indians vs {match.opponent}</h3>
@@ -182,13 +189,20 @@ export default function MatchesPage() {
                           <div className="p-6">
                             <div className="flex items-center flex-wrap gap-4 mb-4">
                               <div className="flex items-center">
-                                <Image src="/mumbai-indians-logo.svg" alt="Mumbai Indians" width={60} height={60} />
+                                <Image
+                                  src="/mumbai-indians-logo.svg"
+                                  alt="Mumbai Indians"
+                                  width={60}
+                                  height={60}
+                                  priority
+                                />
                                 <span className="mx-3 text-xl font-bold">VS</span>
                                 <Image
                                   src={match.opponentLogo || "/placeholder.svg"}
                                   alt={match.opponent}
                                   width={60}
                                   height={60}
+                                  priority
                                 />
                               </div>
                               <h3 className="text-lg font-bold">Mumbai Indians vs {match.opponent}</h3>
@@ -242,4 +256,3 @@ export default function MatchesPage() {
     </div>
   )
 }
-
