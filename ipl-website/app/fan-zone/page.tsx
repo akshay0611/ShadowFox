@@ -16,10 +16,10 @@ export default function FanZonePage() {
       id: 1,
       username: "rohitsharma45",
       name: "Rohit Sharma",
-      avatar: "/placeholder.svg?height=50&width=50",
+      avatar: "/rohitsharma.avif?height=50&width=50",
       verified: true,
       content: "Great team effort today! Thanks to all the fans for the incredible support. #MumbaiIndians #OneFamily",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/mumbai-indians-team.jpg?height=400&width=600",
       likes: 45892,
       comments: 2341,
       shares: 8745,
@@ -33,7 +33,7 @@ export default function FanZonePage() {
       verified: true,
       content:
         "Match Day! Mumbai Indians take on Chennai Super Kings at Wankhede Stadium tonight. Let's go Paltan! #MIvCSK #OneFamily",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/socialfeed2.webp?height=400&width=600",
       likes: 32456,
       comments: 1567,
       shares: 6543,
@@ -43,10 +43,10 @@ export default function FanZonePage() {
       id: 3,
       username: "jaspritb1",
       name: "Jasprit Bumrah",
-      avatar: "/placeholder.svg?height=50&width=50",
+      avatar: "/jaspritbumrah.avif?height=50&width=50",
       verified: true,
       content: "Practice session was intense today. Ready for the next challenge! #MumbaiIndians",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/socialfeed3.avif?height=400&width=600",
       likes: 28754,
       comments: 1245,
       shares: 4532,
@@ -127,8 +127,8 @@ export default function FanZonePage() {
                             <Image
                               src={post.avatar || "/placeholder.svg"}
                               alt={post.name}
-                              width={40}
-                              height={40}
+                              width={60}
+                              height={60}
                               className="rounded-full"
                             />
                             <div>
