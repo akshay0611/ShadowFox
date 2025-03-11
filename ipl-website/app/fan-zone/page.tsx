@@ -57,12 +57,12 @@ export default function FanZonePage() {
 
   // Sample fan photos
   const fanPhotos = [
-    { id: 1, image: "/placeholder.svg?height=300&width=300", user: "fan_2023", likes: 256 },
-    { id: 2, image: "/placeholder.svg?height=300&width=300", user: "blue_army", likes: 189 },
-    { id: 3, image: "/placeholder.svg?height=300&width=300", user: "mi_supporter", likes: 345 },
-    { id: 4, image: "/placeholder.svg?height=300&width=300", user: "cricket_lover", likes: 128 },
-    { id: 5, image: "/placeholder.svg?height=300&width=300", user: "wankhede_fan", likes: 275 },
-    { id: 6, image: "/placeholder.svg?height=300&width=300", user: "mi_forever", likes: 310 },
+    { id: 1, image: "/fangallery_1.jpg?height=300&width=300", user: "fan_2023", likes: 256 },
+    { id: 2, image: "/fangallery_2.webp?height=300&width=300", user: "blue_army", likes: 189 },
+    { id: 3, image: "/fangallery_3.jpeg?height=300&width=300", user: "mi_supporter", likes: 345 },
+    { id: 4, image: "/fangallery_4.webp?height=300&width=300", user: "cricket_lover", likes: 128 },
+    { id: 5, image: "/fangallery_5.avif?height=300&width=300", user: "wankhede_fan", likes: 275 },
+    { id: 6, image: "/fangallery_6.jpeg?height=300&width=300", user: "mi_forever", likes: 310 },
   ]
 
   // Sample forum topics
