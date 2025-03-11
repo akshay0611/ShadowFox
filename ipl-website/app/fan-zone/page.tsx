@@ -79,7 +79,7 @@ export default function FanZonePage() {
       id: 1,
       title: "Design a MI Fan Jersey",
       description: "Show your creativity by designing a special jersey for MI fans.",
-      deadline: "May 15, 2023",
+      deadline: "May 15, 2025",
       prize: "Signed MI jersey and match tickets",
       participants: 345,
     },
@@ -87,7 +87,7 @@ export default function FanZonePage() {
       id: 2,
       title: "MI Trivia Challenge",
       description: "Test your knowledge about Mumbai Indians history and players.",
-      deadline: "May 20, 2023",
+      deadline: "May 20, 2025",
       prize: "Meet & Greet with MI players",
       participants: 567,
     },
@@ -394,7 +394,7 @@ export default function FanZonePage() {
                             <h3 className="font-bold">MI Memorable Moments Photo Contest</h3>
                             <p className="text-sm text-muted-foreground mb-2">Winner: @blue_army</p>
                             <p>
-                           @blue_army&apos;s fantastic photo capturing the IPL 2020 final celebration moment won our
+                           @blue_army&apos;s fantastic photo capturing the IPL 2025 final celebration moment won our
                            hearts and the grand prize!
                           </p>
                           </div>
