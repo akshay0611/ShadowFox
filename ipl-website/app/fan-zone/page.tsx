@@ -7,6 +7,7 @@ import { Heart, MessageSquare, Share2 } from "lucide-react"
 import FanPoll from "@/components/fan-poll"
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Twitter, Facebook, Instagram, Youtube } from "lucide-react";
 
 
 export default function FanZonePage() {
@@ -195,33 +196,38 @@ export default function FanZonePage() {
                       </CardContent>
                     </Card>
                     <Card>
-                      <CardHeader>
-                        <CardTitle>Follow Mumbai Indians</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="grid grid-cols-4 gap-4">
-                          {["twitter", "facebook", "instagram", "youtube"].map((platform) => (
-                            <Link
-                              key={platform}
-                              href={`https://${platform}.com/mipaltan`}
-                              className="flex flex-col items-center gap-2"
-                            >
-                              <div className="rounded-full bg-muted h-12 w-12 flex items-center justify-center hover:bg-blue-100 transition-colors">
-                                <Image src={`/${platform}-icon.svg`} alt={platform} width={24} height={24} />
-                              </div>
-                              <span className="text-xs capitalize">{platform}</span>
-                            </Link>
-                          ))}
-                        </div>
-                      </CardContent>
-                    </Card>
+  <CardHeader>
+    <CardTitle>Follow Mumbai Indians</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <div className="grid grid-cols-4 gap-4">
+      {[
+        { platform: "twitter", icon: <Twitter className="h-6 w-6" /> },
+        { platform: "facebook", icon: <Facebook className="h-6 w-6" /> },
+        { platform: "instagram", icon: <Instagram className="h-6 w-6" /> },
+        { platform: "youtube", icon: <Youtube className="h-6 w-6" /> },
+      ].map(({ platform, icon }) => (
+        <Link
+          key={platform}
+          href={`https://${platform}.com/mipaltan`}
+          className="flex flex-col items-center gap-2"
+        >
+          <div className="rounded-full bg-muted h-12 w-12 flex items-center justify-center hover:bg-blue-100 transition-colors">
+            {icon}
+          </div>
+          <span className="text-xs capitalize">{platform}</span>
+        </Link>
+      ))}
+    </div>
+  </CardContent>
+</Card>
                     <Card>
                       <CardHeader>
                         <CardTitle>Official Hashtags</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <div className="flex flex-wrap gap-2">
-                          {["#OneFamily", "#MumbaiIndians", "#MI", "#IPL2023", "#MIvCSK", "#Paltan"].map((tag) => (
+                          {["#OneFamily", "#MumbaiIndians", "#MI", "#IPL2025", "#MIvCSK", "#Paltan"].map((tag) => (
                             <Link
                               key={tag}
                               href={`/hashtag/${tag.replace("#", "")}`}
