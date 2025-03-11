@@ -8,20 +8,20 @@ export default function TeamHighlights() {
   const highlights = [
     {
       id: 1,
-      title: "Best catches of IPL 2022",
-      thumbnail: "/placeholder.svg?height=200&width=350",
+      title: "Best catches of IPL 2025",
+      thumbnail: "/teamhighlights_1.webp?height=200&width=350",
       duration: "5:24",
     },
     {
       id: 2,
       title: "Mumbai Indians vs Chennai Super Kings | Match Highlights",
-      thumbnail: "/placeholder.svg?height=200&width=350",
+      thumbnail: "/teamhighlights_2.webp?height=200&width=350",
       duration: "8:15",
     },
     {
       id: 3,
       title: "Top 10 sixes by Mumbai Indians",
-      thumbnail: "/placeholder.svg?height=200&width=350",
+      thumbnail: "/teamhighlights_3.jpg?height=200&width=350",
       duration: "4:30",
     },
   ]
