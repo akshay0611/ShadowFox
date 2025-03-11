@@ -98,7 +98,7 @@ export default function MatchesPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 text-white">
+        <section className="w-full py-12 md:py-24 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 text-white flex justify-center items-center">
           <div className="container px-4 md:px-6 text-center">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Match Schedule</h1>
             <p className="mx-auto max-w-[700px] mt-4 text-gray-200 md:text-xl">
@@ -107,7 +107,7 @@ export default function MatchesPage() {
           </div>
         </section>
 
-        <section className="w-full py-12">
+        <section className="w-full py-12 flex justify-center items-center">
           <div className="container px-4 md:px-6">
             <Tabs defaultValue="upcoming" className="w-full">
               <div className="flex justify-center mb-8">
