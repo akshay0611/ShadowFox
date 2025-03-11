@@ -255,7 +255,7 @@ export default function Home() {
                     <span>Fan Gallery</span>
                   </Link>
                   <Link
-                    href="/fan-zone/social"
+                    href="/fan-zone/social-feed"
                     className="flex items-center gap-2 rounded-lg bg-blue-800 p-4 hover:bg-blue-700 transition-colors"
                   >
                     <Heart className="h-5 w-5" />
