@@ -45,7 +45,7 @@ export default function Footer() {
               <Link href="/fan-zone/contests" className="text-sm text-muted-foreground hover:text-foreground">
                 Contests
               </Link>
-              <Link href="/fan-zone/social" className="text-sm text-muted-foreground hover:text-foreground">
+              <Link href="/fan-zone/social-feed" className="text-sm text-muted-foreground hover:text-foreground">
                 Social Feed
               </Link>
             </nav>
