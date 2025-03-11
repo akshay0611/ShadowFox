@@ -1,57 +1,64 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import Link from "next/link";
-
+import { Button } from "@/components/ui/button"
+import Image from "next/image"
+import Link from "next/link"
 
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/80 shadow-md backdrop-blur-lg">
       <div className="container flex h-16 items-center justify-between px-6">
-        
-
-<div className="flex items-center gap-3">
-  <Image
-    src="/mumbai-indians-logo.svg"
-    alt="Mumbai Indians Logo"
-    width={50} 
-    height={50} 
-    className="h-14 w-14"
-  />
-  <Link
-    href="/"
-    className="text-3xl font-extrabold tracking-wide"
-    style={{ fontFamily: "'Bebas Neue', sans-serif", color: "#0078bc" }}
-  >
-    Mumbai Indians
-  </Link>
-</div>
-
-
-
-<nav className="hidden md:flex items-center gap-8">
-  {["Home", "Team", "Matches", "Stats", "News", "Fan Zone"].map((item, index) => (
-    <Link
-      key={index}
-      href={item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "-")}`}
-      className="text-base font-medium text-gray-700 transition duration-300 hover:text-[#0078bc]"
-    >
-      {item}
-    </Link>
-  ))}
-</nav>
-
-      
-        <div className="flex items-center gap-4">
-          <Button variant="outline" size="sm" className="hidden md:flex">
-            Sign In
-          </Button>
-          <Button
-            size="sm"
-            className="hidden md:flex bg-gradient-to-r from-[#0078bc] to-[#005bb5] text-white shadow-lg hover:opacity-90"
+        {/* Logo & Branding */}
+        <div className="flex items-center gap-3">
+          <Image
+            src="/mumbai-indians-logo.svg"
+            alt="Mumbai Indians Logo"
+            width={50}
+            height={50}
+            priority
+            className="h-14 w-14"
+          />
+          <Link
+            href="/"
+            className="text-3xl font-extrabold tracking-wide"
+            style={{ fontFamily: "'Bebas Neue', sans-serif", color: "#0078bc" }}
           >
-            Join Fan Club
-          </Button>
-          <Button variant="ghost" size="icon" className="md:hidden">
+            Mumbai Indians
+          </Link>
+        </div>
+
+        {/* Navigation Links */}
+        <nav className="hidden md:flex items-center gap-8">
+          {["Home", "Team", "Matches", "Stats", "News", "Fan Zone"].map((item, index) => (
+            <Link
+              key={index}
+              href={item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "-")}`}
+              className="text-base font-medium text-gray-700 transition duration-300 hover:text-[#0078bc]"
+            >
+              {item}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Buttons */}
+        <div className="flex items-center gap-4">
+          <Link href="/sign-in">
+            <Button variant="outline" size="sm" className="hidden md:flex">
+              Sign In
+            </Button>
+          </Link>
+          <Link href="/join-fan-club">
+            <Button
+              size="sm"
+              className="hidden md:flex bg-gradient-to-r from-[#0078bc] to-[#005bb5] text-white shadow-lg hover:opacity-90"
+            >
+              Join Fan Club
+            </Button>
+          </Link>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            aria-label="Open menu"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -72,5 +79,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  );
+  )
 }
