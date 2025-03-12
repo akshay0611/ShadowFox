@@ -312,35 +312,43 @@ export default function Home() {
               <div className="space-y-4">
                 <h2 className="text-3xl font-bold tracking-tight">Quick Links</h2>
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
-                  <Link
-                    href="/team"
-                    className="flex flex-col items-center p-4 rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                  >
-                    <Users className="h-6 w-6 mb-2" />
-                    <span>Team</span>
-                  </Link>
-                  <Link
-                    href="/matches"
-                    className="flex flex-col items-center p-4 rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                  >
-                    <CalendarDays className="h-6 w-6 mb-2" />
-                    <span>Matches</span>
-                  </Link>
-                  <Link
-                    href="/stats"
-                    className="flex flex-col items-center p-4 rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                  >
-                    <TrendingUp className="h-6 w-6 mb-2" />
-                    <span>Statistics</span>
-                  </Link>
-                  <Link
-                    href="/news"
-                    className="flex flex-col items-center p-4 rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                  >
-                    <Newspaper className="h-6 w-6 mb-2" />
-                    <span>News</span>
-                  </Link>
-                </div>
+  <Link
+    href="/team"
+    className="flex flex-col items-center p-4 rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+  >
+    <div className="p-2 bg-blue-100 rounded-full">
+      <Users className="h-6 w-6 mb-2 text-blue-600" />
+    </div>
+    <span>Team</span>
+  </Link>
+  <Link
+    href="/matches"
+    className="flex flex-col items-center p-4 rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+  >
+    <div className="p-2 bg-green-100 rounded-full">
+      <CalendarDays className="h-6 w-6 mb-2 text-green-600" />
+    </div>
+    <span>Matches</span>
+  </Link>
+  <Link
+    href="/stats"
+    className="flex flex-col items-center p-4 rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+  >
+    <div className="p-2 bg-purple-100 rounded-full">
+      <TrendingUp className="h-6 w-6 mb-2 text-purple-600" />
+    </div>
+    <span>Statistics</span>
+  </Link>
+  <Link
+    href="/news"
+    className="flex flex-col items-center p-4 rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+  >
+    <div className="p-2 bg-orange-100 rounded-full">
+      <Newspaper className="h-6 w-6 mb-2 text-orange-600" />
+    </div>
+    <span>News</span>
+  </Link>
+</div>
                 <div className="mt-6">
   <h3 className="text-xl font-bold mb-2">Trophy Cabinet</h3>
   <div className="flex gap-4 overflow-x-auto pb-4">
