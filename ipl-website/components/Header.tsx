@@ -36,7 +36,7 @@ export default function Header() {
 
 
         <nav className="hidden md:flex items-center gap-8">
-          {["Home", "Team", "Matches", "Stats", "News", "Fan Zone"].map((item, index) => {
+          {["Home", "Team", "Matches", "Stats", "News", "Fan Zone", "Auctions"].map((item, index) => {
             const href = item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "-")}`;
             return (
               <Link
