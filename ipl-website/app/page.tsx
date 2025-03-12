@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link"
 import Image from "next/image"
 import { CalendarDays, TrendingUp, Users, Newspaper, Heart, MessageSquare, HomeIcon } from "lucide-react"
@@ -11,8 +13,17 @@ import LatestNews from "@/components/latest-news"
 import TeamHighlights from "@/components/team-highlights"
 import FanPoll from "@/components/fan-poll"
 import { Twitter, Facebook, Instagram, Youtube , Trophy,} from "lucide-react"; 
+import { useState } from "react"; // Import useState
 
 export default function Home() {
+  const [subscribed, setSubscribed] = useState(false); // State to track subscription success
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent default form submission
+    setSubscribed(true); // Set subscribed to true
+    setTimeout(() => setSubscribed(false), 5000); // Reset after 5 seconds
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -354,7 +365,7 @@ export default function Home() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <form className="space-y-4">
+                  <form className="space-y-4" onSubmit={handleSubscribe}>
                       <div className="grid gap-2">
                         <label
                           htmlFor="email"
@@ -367,12 +378,17 @@ export default function Home() {
                           id="email"
                           placeholder="m@example.com"
                           className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                          required
                         />
                       </div>
                       <Button type="submit" className="w-full bg-[#0078bc] text-white">
-  Subscribe
-</Button>
-
+                        Subscribe
+                      </Button>
+                      {subscribed && (
+                        <div className="mt-4 p-4 bg-green-100 text-green-700 rounded-md">
+                          🎉 Success! You&apos;ve subscribed to updates.
+                        </div>
+                      )}
                     </form>
                   </CardContent>
                   <CardFooter className="flex flex-col items-start gap-2">
