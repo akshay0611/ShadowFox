@@ -1,12 +1,21 @@
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
-import Link from "next/link"
+"use client";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation"; 
 
 export default function Header() {
+  const pathname = usePathname(); 
+
+ 
+  const isActive = (href: string) => {
+    return pathname === href;
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/80 shadow-md backdrop-blur-lg">
       <div className="container flex h-16 items-center justify-between px-6">
-        {/* Logo & Branding */}
+
         <div className="flex items-center gap-3">
           <Image
             src="/mumbai-indians-logo.svg"
@@ -25,20 +34,25 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Navigation Links */}
+
         <nav className="hidden md:flex items-center gap-8">
-          {["Home", "Team", "Matches", "Stats", "News", "Fan Zone"].map((item, index) => (
-            <Link
-              key={index}
-              href={item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "-")}`}
-              className="text-base font-medium text-gray-700 transition duration-300 hover:text-[#0078bc]"
-            >
-              {item}
-            </Link>
-          ))}
+          {["Home", "Team", "Matches", "Stats", "News", "Fan Zone"].map((item, index) => {
+            const href = item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "-")}`;
+            return (
+              <Link
+                key={index}
+                href={href}
+                className={`text-base font-medium text-gray-700 transition duration-300 hover:text-[#0078bc] ${
+                  isActive(href) ? "text-[#0078bc] font-semibold underline underline-offset-4" : ""
+                }`}
+              >
+                {item}
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* Buttons */}
+
         <div className="flex items-center gap-4">
           <Link href="/sign-in">
             <Button variant="outline" size="sm" className="hidden md:flex">
@@ -79,5 +93,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }
