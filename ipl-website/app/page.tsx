@@ -30,22 +30,22 @@ export default function Home() {
                     exclusive fan content.
                   </p>
                 </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                    Match Schedule
-                  </Button>
-                  <Button
-  variant="outline"
-  size="lg"
-  className="text-white border-white bg-[#1e40af] hover:bg-[#1e40af] hover:text-white"
->
-  Watch Highlights
-</Button>
-
-
-
-                </div>
-              </div>
+                <div className="relative flex flex-col gap-2 min-[400px]:flex-row">
+    <Link href="/matches" passHref>
+      <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+        Match Schedule
+      </Button>
+    </Link>
+    <Button 
+      type="button"
+      variant="outline" 
+      size="lg" 
+      className="text-white border-white bg-[#1e40af] hover:bg-[#1e40af] hover:text-white"
+    >
+      Watch Highlights
+    </Button>
+  </div>
+</div>
               <div className="mx-auto flex items-center justify-center">
                 <Image
                   src="/mumbai-indians.webp"
