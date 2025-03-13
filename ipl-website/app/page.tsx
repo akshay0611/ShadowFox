@@ -170,7 +170,9 @@ export default function Home() {
         <p className="text-muted-foreground">
           Meet the stars who power Mumbai Indians with their exceptional talent and passion for the game.
         </p>
-        <Button className="mt-4">View All Players</Button>
+        <Button className="mt-4" asChild>
+  <Link href="/team">View All Players</Link>
+</Button>
       </div>
       {[
         {
