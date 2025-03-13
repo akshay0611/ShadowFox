@@ -29,9 +29,9 @@ export function AppSidebar({ handleSignOut }: { handleSignOut: () => Promise<voi
       <SidebarHeader className="border-b border-blue-800 bg-blue-900/60 p-4">
         <div className="flex items-center justify-center">
           <div className="flex flex-col items-center">
-            <div className="mb-2 h-16 w-16 overflow-hidden rounded-full border-2 border-yellow-400 bg-blue-800 p-1">
+            <div className="mb-2 h-16 w-16 overflow-hidden rounded-full border-2 p-1">
               <Image
-                src="/placeholder.svg?height=60&width=60"
+                src="/midashboardlogo.png?height=100&width=100"
                 alt="Mumbai Indians Logo"
                 width={60}
                 height={60}
