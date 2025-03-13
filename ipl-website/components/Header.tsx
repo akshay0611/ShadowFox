@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 export default function Header() {
   const pathname = usePathname(); 
 
- 
   const isActive = (href: string) => {
     return pathname === href;
   };
@@ -54,17 +53,12 @@ export default function Header() {
 
 
         <div className="flex items-center gap-4">
-          <Link href="/sign-in">
-            <Button variant="outline" size="sm" className="hidden md:flex">
-              Sign In
-            </Button>
-          </Link>
-          <Link href="/join-fan-club">
+          <Link href="/get-started">
             <Button
               size="sm"
               className="hidden md:flex bg-gradient-to-r from-[#0078bc] to-[#005bb5] text-white shadow-lg hover:opacity-90"
             >
-              Join Fan Club
+              Get Started
             </Button>
           </Link>
           <Button
