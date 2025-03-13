@@ -1,70 +1,267 @@
 "use client";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
+
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
-import { User } from "@supabase/supabase-js"; // Import User type from Supabase
+import { User } from "@supabase/supabase-js";
+import { Button } from "@/components/ui/button";
+import { Home, Users, CalendarDays, Newspaper, Trophy, LogOut,  ChevronRight } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { 
+  Sidebar, 
+  SidebarContent, 
+  SidebarFooter, 
+  SidebarHeader, 
+  SidebarMenu, 
+  SidebarMenuButton, 
+  SidebarMenuItem, 
+  SidebarProvider, 
+  SidebarTrigger 
+} from "@/components/ui/sidebar";
+import Image from "next/image"; // Import Image from next/image
 
 export default function DashboardPage() {
-  const [user, setUser] = useState<User | null>(null); // Use User type from Supabase
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  // Fetch user data on component mount
   useEffect(() => {
     const fetchUser = async () => {
       const { data: { user }, error } = await supabase.auth.getUser();
-
       if (error || !user) {
-        // Redirect to /get-started if user is not authenticated
         router.push("/get-started");
       } else {
         setUser(user);
       }
-
       setLoading(false);
     };
-
     fetchUser();
   }, [router]);
 
-  // Handle Sign Out
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
-    if (error) {
-      alert(error.message);
-    } else {
-      // Redirect to /get-started after signing out
-      router.push("/get-started");
-    }
+    if (!error) router.push("/get-started");
   };
 
   if (loading) {
     return (
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-1 flex items-center justify-center">
-          <div className="text-center">
-            <p className="text-gray-600">Loading...</p>
-          </div>
-        </main>
-        <Footer />
+      <div className="flex h-screen items-center justify-center bg-gradient-to-br from-indigo-950 to-blue-900">
+        <div className="flex flex-col items-center gap-4">
+          <div className="h-16 w-16 animate-spin rounded-full border-4 border-indigo-200 border-t-indigo-500"></div>
+          <p className="text-xl font-medium text-white">Loading...</p>
+        </div>
       </div>
     );
   }
 
+  const navItems = [
+    { icon: Home, label: "Dashboard", active: true },
+    { icon: Users, label: "Team Info" },
+    { icon: CalendarDays, label: "Match Schedule" },
+    { icon: Newspaper, label: "News & Updates" },
+    { icon: Trophy, label: "Achievements" },
+  ];
+
+  const upcomingMatches = [
+    {
+      opponent: "Chennai Super Kings",
+      date: "12th April 2025",
+      venue: "Wankhede Stadium, Mumbai",
+      time: "7:30 PM IST",
+      status: "Home"
+    },
+    {
+      opponent: "Royal Challengers Bangalore",
+      date: "18th April 2025",
+      venue: "M. Chinnaswamy Stadium, Bangalore",
+      time: "7:30 PM IST",
+      status: "Away"
+    }
+  ];
+
+  const recentNews = [
+    {
+      title: "Rohit Sharma to lead Mumbai Indians in IPL 2025",
+      date: "March 15, 2025"
+    },
+    {
+      title: "Mumbai Indians announce new signing ahead of IPL 2025",
+      date: "March 10, 2025"
+    }
+  ];
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-1">
-        <div className="container mx-auto py-12 px-4">
-          <h1 className="text-3xl font-bold">Welcome, {user?.email}</h1>
-          <Button onClick={handleSignOut}>Sign Out</Button>
+    <SidebarProvider>
+      <div className="flex h-screen bg-gradient-to-br from-indigo-950 to-blue-900 text-white">
+        {/* Sidebar for desktop */}
+        <AppSidebar navItems={navItems} handleSignOut={handleSignOut} />
+        
+        {/* Main Content */}
+        <div className="flex-1 overflow-auto">
+          <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b border-blue-800 bg-indigo-950/80 px-4 backdrop-blur-sm">
+            <div className="flex items-center gap-2">
+              <SidebarTrigger className="lg:hidden" />
+              <h1 className="text-xl font-bold text-white">Mumbai Indians Fan Club</h1>
+            </div>
+            <div className="flex items-center gap-4">
+              <Badge variant="outline" className="border-blue-500 bg-blue-950/50 text-blue-300">
+                Premium Member
+              </Badge>
+              <Avatar>
+                <AvatarImage src="/placeholder.svg?height=40&width=40" />
+                <AvatarFallback className="bg-blue-700 text-white">
+                  {user?.email?.charAt(0).toUpperCase() || "U"}
+                </AvatarFallback>
+              </Avatar>
+            </div>
+          </header>
+
+          <main className="container mx-auto p-6">
+            <div className="mb-8">
+              <h2 className="mb-2 text-2xl font-bold text-white">
+                Welcome, {user?.email?.split('@')[0] || "Fan"}
+              </h2>
+              <p className="text-blue-200">
+                Stay updated with the latest Mumbai Indians news and matches
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {/* Upcoming Matches */}
+              <Card className="col-span-full border-blue-800 bg-blue-900/40 text-white backdrop-blur-sm md:col-span-2">
+                <CardHeader className="border-b border-blue-800 bg-blue-900/60">
+                  <CardTitle className="flex items-center gap-2 text-xl">
+                    <CalendarDays className="h-5 w-5 text-blue-300" />
+                    Upcoming Matches
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-0">
+                  {upcomingMatches.map((match, index) => (
+                    <div 
+                      key={index} 
+                      className="flex flex-col border-b border-blue-800 p-4 last:border-0 md:flex-row md:items-center md:justify-between"
+                    >
+                      <div className="mb-2 md:mb-0">
+                        <h3 className="font-bold text-blue-100">MI vs {match.opponent}</h3>
+                        <p className="text-sm text-blue-300">{match.date} • {match.time}</p>
+                        <p className="text-sm text-blue-300">{match.venue}</p>
+                      </div>
+                      <Badge 
+                        className={match.status === "Home" 
+                          ? "bg-blue-600 hover:bg-blue-700" 
+                          : "bg-indigo-700 hover:bg-indigo-800"
+                        }
+                      >
+                        {match.status}
+                      </Badge>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+
+              {/* News & Updates */}
+              <Card className="border-blue-800 bg-blue-900/40 text-white backdrop-blur-sm">
+                <CardHeader className="border-b border-blue-800 bg-blue-900/60">
+                  <CardTitle className="flex items-center gap-2 text-xl">
+                    <Newspaper className="h-5 w-5 text-blue-300" />
+                    Latest News
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-0">
+                  {recentNews.map((news, index) => (
+                    <div key={index} className="flex items-center justify-between border-b border-blue-800 p-4 last:border-0">
+                      <div>
+                        <h3 className="font-medium text-blue-100">{news.title}</h3>
+                        <p className="text-sm text-blue-300">{news.date}</p>
+                      </div>
+                      <ChevronRight className="h-5 w-5 text-blue-400" />
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+
+              {/* Team Stats */}
+              <Card className="col-span-full border-blue-800 bg-blue-900/40 text-white backdrop-blur-sm md:col-span-2 lg:col-span-3">
+                <CardHeader className="border-b border-blue-800 bg-blue-900/60">
+                  <CardTitle className="flex items-center gap-2 text-xl">
+                    <Trophy className="h-5 w-5 text-blue-300" />
+                    Team Achievements
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-4">
+                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+                    {[2013, 2015, 2017, 2019, 2020].map((year) => (
+                      <div key={year} className="flex flex-col items-center rounded-lg border border-blue-700 bg-blue-800/50 p-4">
+                        <Trophy className="mb-2 h-8 w-8 text-yellow-400" />
+                        <p className="text-lg font-bold text-yellow-400">IPL Champions</p>
+                        <p className="text-blue-200">{year}</p>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </main>
         </div>
-      </main>
-      <Footer />
-    </div>
+      </div>
+    </SidebarProvider>
+  );
+}
+
+function AppSidebar({ 
+    navItems, 
+    handleSignOut 
+  }: { 
+    navItems: { icon: React.ElementType; label: string; active?: boolean }[],
+    handleSignOut: () => Promise<void> 
+  }) {
+  return (
+    <Sidebar className="border-r border-blue-800">
+      <SidebarHeader className="border-b border-blue-800 bg-blue-900/60 p-4">
+        <div className="flex items-center justify-center">
+          <div className="flex flex-col items-center">
+          <div className="mb-2 h-16 w-16 overflow-hidden rounded-full border-2 border-yellow-400 bg-blue-800 p-1">
+  <Image
+    src="/placeholder.svg?height=60&width=60"
+    alt="Mumbai Indians Logo"
+    width={60} // Set explicit width
+    height={60} // Set explicit height
+    className="h-full w-full object-cover"
+  />
+</div>
+            <h2 className="text-xl font-bold text-yellow-400">Mumbai Indians</h2>
+            <p className="text-xs text-blue-300">Fan Club Portal</p>
+          </div>
+        </div>
+      </SidebarHeader>
+      
+      <SidebarContent className="p-2">
+        <SidebarMenu>
+          {navItems.map((item, index) => (
+            <SidebarMenuItem key={index}>
+              <SidebarMenuButton 
+                className={item.active ? "bg-blue-700 text-white" : "hover:bg-blue-800"}
+              >
+                <item.icon className="h-5 w-5" />
+                <span>{item.label}</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
+      </SidebarContent>
+      
+      <SidebarFooter className="mt-auto border-t border-blue-800 p-4">
+        <Button 
+          onClick={handleSignOut} 
+          variant="outline" 
+          className="w-full border-yellow-500 bg-transparent text-yellow-400 hover:bg-yellow-500 hover:text-blue-900"
+        >
+          <LogOut className="mr-2 h-4 w-4" />
+          Sign Out
+        </Button>
+      </SidebarFooter>
+    </Sidebar>
   );
 }
