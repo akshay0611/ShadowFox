@@ -22,7 +22,7 @@ export default function GetStartedPage() {
     } else {
       console.log("Signed in successfully:", data);
       // Redirect or update UI as needed
-      window.location.href = "/dashboard"; // Example redirect
+      window.location.href = "/protected/dashboard"; // Example redirect
     }
     setLoading(false);
   };
