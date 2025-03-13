@@ -4,21 +4,22 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
 export default function GetStartedPage() {
   const [activeTab, setActiveTab] = useState<"sign-in" | "join-fan-club">("sign-in");
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
+
 
   useEffect(() => {
     // Check if the URL contains an access_token (user clicked confirmation email)
     const hash = window.location.hash;
     if (hash.includes("access_token")) {
-      router.replace("/get-started"); // Redirect to the sign-in page
+      // Use the current origin for the redirect instead of a hardcoded path
+      const currentOrigin = window.location.origin;
+      window.location.href = `${currentOrigin}/get-started`;
     }
-  }, [router]);
+  }, []);
 
   // Handle Sign In
   const handleSignIn = async (email: string, password: string) => {
@@ -32,8 +33,8 @@ export default function GetStartedPage() {
       alert(error.message);
     } else {
       console.log("Signed in successfully:", data);
-      // Redirect or update UI as needed
-      window.location.href = "/dashboard"; // Example redirect
+      // Use the current origin for redirect
+      window.location.href = `${window.location.origin}/dashboard`;
     }
     setLoading(false);
   };
