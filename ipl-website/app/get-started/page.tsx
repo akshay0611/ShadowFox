@@ -2,11 +2,67 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { useState } from "react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function GetStartedPage() {
   const [activeTab, setActiveTab] = useState<"sign-in" | "join-fan-club">("sign-in");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    // Check if the URL contains an access_token (user clicked confirmation email)
+    const hash = window.location.hash;
+    if (hash.includes("access_token")) {
+      router.replace("/get-started"); // Redirect to the sign-in page
+    }
+  }, [router]);
+
+  // Handle Sign In
+  const handleSignIn = async (email: string, password: string) => {
+    setLoading(true);
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      alert(error.message);
+    } else {
+      console.log("Signed in successfully:", data);
+      // Redirect or update UI as needed
+      window.location.href = "/dashboard"; // Example redirect
+    }
+    setLoading(false);
+  };
+
+  // Handle Sign Up
+  const handleSignUp = async (email: string, password: string, fullName: string, city: string) => {
+    setLoading(true);
+  
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          full_name: fullName,
+          city,
+        },
+      },
+    });
+  
+    if (error) {
+      alert(error.message);
+    } else {
+      console.log("Signed up successfully:", data);
+      alert("Thanks for joining! Please check your email to verify your account.");
+    }
+  
+    setLoading(false);
+  };
+  
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -48,7 +104,16 @@ export default function GetStartedPage() {
               {activeTab === "sign-in" && (
                 <>
                   <h2 className="text-2xl font-bold text-center mb-6">Sign In to Your Account</h2>
-                  <form className="space-y-6">
+                  <form
+                    className="space-y-6"
+                    onSubmit={async (e) => {
+                      e.preventDefault();
+                      const formData = new FormData(e.currentTarget);
+                      const email = formData.get("email") as string;
+                      const password = formData.get("password") as string;
+                      await handleSignIn(email, password);
+                    }}
+                  >
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                         Email Address
@@ -87,12 +152,12 @@ export default function GetStartedPage() {
                           Remember me
                         </label>
                       </div>
-                      <Link href="/forgot-password" className="text-sm text-blue-600 hover:underline">
+                      <a href="/forgot-password" className="text-sm text-blue-600 hover:underline">
                         Forgot Password?
-                      </Link>
+                      </a>
                     </div>
-                    <Button type="submit" className="w-full">
-                      Sign In
+                    <Button type="submit" className="w-full" disabled={loading}>
+                      {loading ? "Signing In..." : "Sign In"}
                     </Button>
                   </form>
                   <div className="mt-6 text-center">
@@ -113,7 +178,18 @@ export default function GetStartedPage() {
               {activeTab === "join-fan-club" && (
                 <>
                   <h2 className="text-2xl font-bold text-center mb-6">Join the Fan Club</h2>
-                  <form className="space-y-6">
+                  <form
+                    className="space-y-6"
+                    onSubmit={async (e) => {
+                      e.preventDefault();
+                      const formData = new FormData(e.currentTarget);
+                      const email = formData.get("email") as string;
+                      const password = formData.get("password") as string;
+                      const fullName = formData.get("name") as string;
+                      const city = formData.get("city") as string;
+                      await handleSignUp(email, password, fullName, city);
+                    }}
+                  >
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                         Full Name
@@ -141,14 +217,14 @@ export default function GetStartedPage() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                        Phone Number
+                      <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                        Password
                       </label>
                       <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        placeholder="Enter your phone number"
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required
                       />
@@ -166,8 +242,8 @@ export default function GetStartedPage() {
                         required
                       />
                     </div>
-                    <Button type="submit" className="w-full">
-                      Join Now
+                    <Button type="submit" className="w-full" disabled={loading}>
+                      {loading ? "Joining..." : "Join Now"}
                     </Button>
                   </form>
                   <div className="mt-6 text-center">
