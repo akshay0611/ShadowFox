@@ -10,7 +10,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { supabase } from "@/lib/supabaseClient";
 
-// Define proper interfaces for your data
+
 interface Player {
   id: string;
   name: string;
@@ -38,7 +38,7 @@ export default function TeamPage() {
   });
   const [loading, setLoading] = useState(true);
 
-  // Fetch team data from Supabase
+
   useEffect(() => {
     const fetchTeamData = async () => {
       setLoading(true);
@@ -50,7 +50,7 @@ export default function TeamPage() {
       if (error) {
         console.error("Error fetching team data:", error);
       } else {
-        // Organize data by category
+   
         const organizedData: TeamData = {
           batsmen: data.filter((player: Player) => player.category === "batsmen"),
           bowlers: data.filter((player: Player) => player.category === "bowlers"),
@@ -76,14 +76,14 @@ export default function TeamPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
-        {/* Gradient Header Section */}
+    
         <section className="w-full py-12 md:py-24 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 text-white flex justify-center items-center">
           <div className="container px-4 md:px-6 text-center">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Meet Our Team</h1>
             <p className="mx-auto max-w-[700px] mt-4 text-gray-200 md:text-xl">
               Get to know the champions who represent Mumbai Indians on the field.
             </p>
-            {/* Toggle for Male/Female Teams */}
+           
             <div className="mt-6">
               <button
                 onClick={() => setTeamType("male")}
@@ -105,7 +105,7 @@ export default function TeamPage() {
           </div>
         </section>
 
-        {/* Team Tabs Section */}
+       
         <section className="w-full py-12 flex justify-center items-center">
           <div className="container px-4 md:px-6">
             <Tabs defaultValue="batsmen" className="w-full">
