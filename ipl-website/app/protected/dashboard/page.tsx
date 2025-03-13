@@ -4,23 +4,16 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
 import { User } from "@supabase/supabase-js";
-import { Button } from "@/components/ui/button";
-import { Home, Users, CalendarDays, Newspaper, Trophy, LogOut,  ChevronRight } from 'lucide-react';
+import { Home, Users, CalendarDays, Newspaper, Trophy, ChevronRight } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
-  Sidebar, 
-  SidebarContent, 
-  SidebarFooter, 
-  SidebarHeader, 
-  SidebarMenu, 
-  SidebarMenuButton, 
-  SidebarMenuItem, 
   SidebarProvider, 
   SidebarTrigger 
 } from "@/components/ui/sidebar";
-import Image from "next/image"; // Import Image from next/image
+
+import { AppSidebar } from "@/components/AppSidebar"; 
 
 export default function DashboardPage() {
   const [user, setUser] = useState<User | null>(null);
@@ -95,10 +88,10 @@ export default function DashboardPage() {
   return (
     <SidebarProvider>
       <div className="flex h-screen bg-gradient-to-br from-indigo-950 to-blue-900 text-white">
-        {/* Sidebar for desktop */}
+
         <AppSidebar navItems={navItems} handleSignOut={handleSignOut} />
         
-        {/* Main Content */}
+      
         <div className="flex-1 overflow-auto">
           <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b border-blue-800 bg-indigo-950/80 px-4 backdrop-blur-sm">
             <div className="flex items-center gap-2">
@@ -129,7 +122,7 @@ export default function DashboardPage() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {/* Upcoming Matches */}
+       
               <Card className="col-span-full border-blue-800 bg-blue-900/40 text-white backdrop-blur-sm md:col-span-2">
                 <CardHeader className="border-b border-blue-800 bg-blue-900/60">
                   <CardTitle className="flex items-center gap-2 text-xl">
@@ -161,7 +154,7 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-              {/* News & Updates */}
+         
               <Card className="border-blue-800 bg-blue-900/40 text-white backdrop-blur-sm">
                 <CardHeader className="border-b border-blue-800 bg-blue-900/60">
                   <CardTitle className="flex items-center gap-2 text-xl">
@@ -182,7 +175,7 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-              {/* Team Stats */}
+            
               <Card className="col-span-full border-blue-800 bg-blue-900/40 text-white backdrop-blur-sm md:col-span-2 lg:col-span-3">
                 <CardHeader className="border-b border-blue-800 bg-blue-900/60">
                   <CardTitle className="flex items-center gap-2 text-xl">
@@ -207,61 +200,5 @@ export default function DashboardPage() {
         </div>
       </div>
     </SidebarProvider>
-  );
-}
-
-function AppSidebar({ 
-    navItems, 
-    handleSignOut 
-  }: { 
-    navItems: { icon: React.ElementType; label: string; active?: boolean }[],
-    handleSignOut: () => Promise<void> 
-  }) {
-  return (
-    <Sidebar className="border-r border-blue-800">
-      <SidebarHeader className="border-b border-blue-800 bg-blue-900/60 p-4">
-        <div className="flex items-center justify-center">
-          <div className="flex flex-col items-center">
-          <div className="mb-2 h-16 w-16 overflow-hidden rounded-full border-2 border-yellow-400 bg-blue-800 p-1">
-  <Image
-    src="/placeholder.svg?height=60&width=60"
-    alt="Mumbai Indians Logo"
-    width={60} // Set explicit width
-    height={60} // Set explicit height
-    className="h-full w-full object-cover"
-  />
-</div>
-            <h2 className="text-xl font-bold text-yellow-400">Mumbai Indians</h2>
-            <p className="text-xs text-blue-300">Fan Club Portal</p>
-          </div>
-        </div>
-      </SidebarHeader>
-      
-      <SidebarContent className="p-2">
-        <SidebarMenu>
-          {navItems.map((item, index) => (
-            <SidebarMenuItem key={index}>
-              <SidebarMenuButton 
-                className={item.active ? "bg-blue-700 text-white" : "hover:bg-blue-800"}
-              >
-                <item.icon className="h-5 w-5" />
-                <span>{item.label}</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
-      </SidebarContent>
-      
-      <SidebarFooter className="mt-auto border-t border-blue-800 p-4">
-        <Button 
-          onClick={handleSignOut} 
-          variant="outline" 
-          className="w-full border-yellow-500 bg-transparent text-yellow-400 hover:bg-yellow-500 hover:text-blue-900"
-        >
-          <LogOut className="mr-2 h-4 w-4" />
-          Sign Out
-        </Button>
-      </SidebarFooter>
-    </Sidebar>
   );
 }
