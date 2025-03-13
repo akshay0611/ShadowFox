@@ -1,6 +1,6 @@
 "use client";
 
-import { LogOut} from 'lucide-react';
+import { Home, Users, CalendarDays, Newspaper, Trophy, LogOut } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 import { 
@@ -14,12 +14,16 @@ import {
 } from "@/components/ui/sidebar";
 import Image from "next/image";
 
-interface AppSidebarProps {
-  navItems: { icon: React.ElementType; label: string; active?: boolean }[];
-  handleSignOut: () => Promise<void>;
-}
+export function AppSidebar({ handleSignOut }: { handleSignOut: () => Promise<void> }) {
+  // Define navItems directly inside the component
+  const navItems = [
+    { icon: Home, label: "Dashboard", active: true },
+    { icon: Users, label: "Team Info" },
+    { icon: CalendarDays, label: "Match Schedule" },
+    { icon: Newspaper, label: "News & Updates" },
+    { icon: Trophy, label: "Achievements" },
+  ];
 
-export function AppSidebar({ navItems, handleSignOut }: AppSidebarProps) {
   return (
     <Sidebar className="border-r border-blue-800">
       <SidebarHeader className="border-b border-blue-800 bg-blue-900/60 p-4">

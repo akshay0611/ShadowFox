@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
 import { User } from "@supabase/supabase-js";
-import { Home, Users, CalendarDays, Newspaper, Trophy, ChevronRight } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -14,6 +13,7 @@ import {
 } from "@/components/ui/sidebar";
 
 import { AppSidebar } from "@/components/AppSidebar"; 
+import { CalendarDays, Newspaper, Trophy, ChevronRight } from 'lucide-react';
 
 export default function DashboardPage() {
   const [user, setUser] = useState<User | null>(null);
@@ -49,14 +49,6 @@ export default function DashboardPage() {
     );
   }
 
-  const navItems = [
-    { icon: Home, label: "Dashboard", active: true },
-    { icon: Users, label: "Team Info" },
-    { icon: CalendarDays, label: "Match Schedule" },
-    { icon: Newspaper, label: "News & Updates" },
-    { icon: Trophy, label: "Achievements" },
-  ];
-
   const upcomingMatches = [
     {
       opponent: "Chennai Super Kings",
@@ -88,10 +80,10 @@ export default function DashboardPage() {
   return (
     <SidebarProvider>
       <div className="flex h-screen bg-gradient-to-br from-indigo-950 to-blue-900 text-white">
-
-        <AppSidebar navItems={navItems} handleSignOut={handleSignOut} />
+        {/* Sidebar for desktop */}
+        <AppSidebar handleSignOut={handleSignOut} />
         
-      
+        {/* Main Content */}
         <div className="flex-1 overflow-auto">
           <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b border-blue-800 bg-indigo-950/80 px-4 backdrop-blur-sm">
             <div className="flex items-center gap-2">
@@ -122,7 +114,7 @@ export default function DashboardPage() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-       
+              {/* Upcoming Matches */}
               <Card className="col-span-full border-blue-800 bg-blue-900/40 text-white backdrop-blur-sm md:col-span-2">
                 <CardHeader className="border-b border-blue-800 bg-blue-900/60">
                   <CardTitle className="flex items-center gap-2 text-xl">
@@ -154,7 +146,7 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-         
+              {/* News & Updates */}
               <Card className="border-blue-800 bg-blue-900/40 text-white backdrop-blur-sm">
                 <CardHeader className="border-b border-blue-800 bg-blue-900/60">
                   <CardTitle className="flex items-center gap-2 text-xl">
@@ -175,7 +167,7 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-            
+              {/* Team Stats */}
               <Card className="col-span-full border-blue-800 bg-blue-900/40 text-white backdrop-blur-sm md:col-span-2 lg:col-span-3">
                 <CardHeader className="border-b border-blue-800 bg-blue-900/60">
                   <CardTitle className="flex items-center gap-2 text-xl">
