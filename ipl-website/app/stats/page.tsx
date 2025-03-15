@@ -1,9 +1,9 @@
+"use client";
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
-
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
 
 export default function StatsPage() {
-
   const topRunScorers = [
     { name: "Rohit Sharma", matches: 15, runs: 480, avg: 32.0, sr: 145.45, fifties: 3, hundreds: 0 },
     { name: "Ishan Kishan", matches: 15, runs: 418, avg: 29.85, sr: 152.73, fifties: 2, hundreds: 0 },
@@ -16,6 +16,38 @@ export default function StatsPage() {
     { name: "Buyman Chawla", wickets: 18, avg: 20.5, economy: 7.8, best: "4/20" },
     { name: "Green Arshad", wickets: 15, avg: 22.3, economy: 8.1, best: "3/25" },
   ]
+
+
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
+  
+
+  const totalTeamRuns = topRunScorers.reduce((sum, player) => sum + player.runs, 0);
+  
+
+  const runDistributionData = topRunScorers.map(player => ({
+    name: player.name,
+    value: player.runs,
+    percentage: ((player.runs / totalTeamRuns) * 100).toFixed(1)
+  }));
+  
+
+  const strikeRateData = topRunScorers.map(player => ({
+    name: player.name,
+    "Strike Rate": player.sr
+  }));
+  
+
+  const battingMilestonesData = [
+    { name: "50s", count: topRunScorers.reduce((sum, player) => sum + player.fifties, 0) },
+    { name: "100s", count: topRunScorers.reduce((sum, player) => sum + player.hundreds, 0) }
+  ];
+  
+
+  const economyRateData = topWicketTakers.map(player => ({
+    name: player.name,
+    "Economy Rate": player.economy,
+    "Bowling Average": player.avg
+  }));
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -30,10 +62,66 @@ export default function StatsPage() {
           </div>
         </section>
 
+      
+        <section className="w-full py-8 bg-gray-50">
+          <div className="container px-4 md:px-6 mx-auto">
+            <h2 className="text-2xl font-bold mb-6 text-center">Batting Overview</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+              <div className="bg-white p-4 rounded-lg shadow">
+                <h3 className="text-lg font-semibold mb-4">Run Distribution</h3>
+                <div className="h-64">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={runDistributionData}
+                        cx="50%"
+                        cy="50%"
+                        labelLine={true}
+                        outerRadius={80}
+                        fill="#8884d8"
+                        dataKey="value"
+                        label={({ name, percentage }) => `${name}: ${percentage}%`}
+                      >
+                        {runDistributionData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                      </Pie>
+                      <Tooltip formatter={(value) => `${value} runs`} />
+                      <Legend />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+
+           
+              <div className="bg-white p-4 rounded-lg shadow">
+                <h3 className="text-lg font-semibold mb-4">Strike Rate Comparison</h3>
+                <div className="h-64">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={strikeRateData}
+                      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis domain={[0, 200]} />
+                      <Tooltip />
+                      <Legend />
+                      <Bar dataKey="Strike Rate" fill="#0088FE" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
         <section className="w-full py-12 flex justify-center items-center">
           <div className="container px-4 md:px-6">
             <div className="space-y-12">
-             
+         
               <div>
                 <h2 className="text-2xl font-bold mb-6">Top Run Scorers</h2>
                 <div className="overflow-x-auto">
@@ -66,51 +154,95 @@ export default function StatsPage() {
                 </div>
               </div>
 
-            
-              <div>
-                <h2 className="text-2xl font-bold mb-6">Top Wicket Takers</h2>
-                <div className="overflow-x-auto">
-                  <table className="w-full border-collapse">
-                    <thead>
-                      <tr className="bg-gray-100">
-                        <th className="p-3 text-left">Player</th>
-                        <th className="p-3 text-center">Wickets</th>
-                        <th className="p-3 text-center">Average</th>
-                        <th className="p-3 text-center">Economy</th>
-                        <th className="p-3 text-center">Best</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {topWicketTakers.map((player, index) => (
-                        <tr key={index} className="border-b hover:bg-gray-50">
-                          <td className="p-3">{player.name}</td>
-                          <td className="p-3 text-center">{player.wickets}</td>
-                          <td className="p-3 text-center">{player.avg}</td>
-                          <td className="p-3 text-center">{player.economy}</td>
-                          <td className="p-3 text-center">{player.best}</td>
+         
+              <div className="bg-gray-50 p-6 rounded-lg">
+                <h2 className="text-2xl font-bold mb-6">Bowling Performance</h2>
+                <div className="h-64 mb-8">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={economyRateData}
+                      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Bar dataKey="Economy Rate" fill="#00C49F" />
+                      <Bar dataKey="Bowling Average" fill="#FF8042" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              
+              
+                <div>
+                  <h3 className="text-xl font-bold mb-4">Top Wicket Takers</h3>
+                  <div className="overflow-x-auto">
+                    <table className="w-full border-collapse">
+                      <thead>
+                        <tr className="bg-gray-100">
+                          <th className="p-3 text-left">Player</th>
+                          <th className="p-3 text-center">Wickets</th>
+                          <th className="p-3 text-center">Average</th>
+                          <th className="p-3 text-center">Economy</th>
+                          <th className="p-3 text-center">Best</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        {topWicketTakers.map((player, index) => (
+                          <tr key={index} className="border-b hover:bg-gray-50">
+                            <td className="p-3">{player.name}</td>
+                            <td className="p-3 text-center">{player.wickets}</td>
+                            <td className="p-3 text-center">{player.avg}</td>
+                            <td className="p-3 text-center">{player.economy}</td>
+                            <td className="p-3 text-center">{player.best}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
 
-            
+        
               <div>
                 <h2 className="text-2xl font-bold mb-6">Rating Milestones</h2>
-                <div className="space-y-4">
-                  <div className="bg-gray-100 p-4 rounded-lg">
-                    <h3 className="font-semibold">Highest Individual Score</h3>
-                    <p>112* (51) - Suryakumar Yadav vs RCB</p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6 rounded-lg shadow">
+                    <h3 className="font-semibold text-lg">Highest Individual Score</h3>
+                    <p className="text-2xl font-bold mt-2">112* (51)</p>
+                    <p className="mt-1">Suryakumar Yadav vs RCB</p>
                   </div>
-                  <div className="bg-gray-100 p-4 rounded-lg">
-                    <h3 className="font-semibold">Highest Team Total</h3>
-                    <p>234/5 vs Sunrisers Hyderabad</p>
+                  <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6 rounded-lg shadow">
+                    <h3 className="font-semibold text-lg">Highest Team Total</h3>
+                    <p className="text-2xl font-bold mt-2">234/5</p>
+                    <p className="mt-1">vs Sunrisers Hyderabad</p>
                   </div>
-                  <div className="bg-gray-100 p-4 rounded-lg">
-                    <h3 className="font-semibold">Most Sixes in an Innings</h3>
-                    <p>8 sixes - Suryakumar Yadav vs RCB</p>
+                  <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6 rounded-lg shadow">
+                    <h3 className="font-semibold text-lg">Most Sixes in an Innings</h3>
+                    <p className="text-2xl font-bold mt-2">8 sixes</p>
+                    <p className="mt-1">Suryakumar Yadav vs RCB</p>
                   </div>
+                </div>
+              </div>
+
+             
+              <div className="bg-white p-6 rounded-lg shadow">
+                <h2 className="text-2xl font-bold mb-6">Batting Milestones</h2>
+                <div className="h-64">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={battingMilestonesData}
+                      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Bar dataKey="count" fill="#8884d8" />
+                    </BarChart>
+                  </ResponsiveContainer>
                 </div>
               </div>
             </div>
