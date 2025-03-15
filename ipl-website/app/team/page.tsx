@@ -146,10 +146,10 @@ export default function TeamPage() {
                             </CardDescription>
                           </CardHeader>
                           <CardFooter>
-                            <Button asChild variant="outline" className="w-full">
-                              <Link href={`/team/player/${player.id}`}>View Profile</Link>
-                            </Button>
-                          </CardFooter>
+  <Button asChild variant="outline" className="w-full">
+    <Link href={`/team/player/${player.id}`}>View Profile</Link>
+  </Button>
+</CardFooter>
                         </Card>
                       ))}
                     </div>
