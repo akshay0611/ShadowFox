@@ -17,7 +17,7 @@ interface Player {
   country: string;
   category: string;
   team_type: string;
-  bio?: string; // Optional field for player bio
+  bio?: string; 
 }
 
 export default function PlayerProfile() {
@@ -60,7 +60,7 @@ export default function PlayerProfile() {
       <main className="flex-1 py-12">
         <div className="container px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Player Image */}
+         
             <div className="relative aspect-square overflow-hidden rounded-lg bg-muted">
               <Image
                 src={player.image || "/placeholder.svg"}
@@ -70,7 +70,7 @@ export default function PlayerProfile() {
               />
             </div>
 
-            {/* Player Details */}
+          
             <div className="space-y-4">
               <h1 className="text-3xl font-bold">{player.name}</h1>
               <p className="text-gray-600 dark:text-gray-400">
