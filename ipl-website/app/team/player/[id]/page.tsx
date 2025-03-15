@@ -69,8 +69,8 @@ export default function ProfilePage() {
             </TabsContent>
             
             <TabsContent value="bio" className="space-y-6">
-              <ProfileBio person={person} />
-            </TabsContent>
+  <ProfileBio person={person} isStaff={isStaff} />
+</TabsContent>
           </Tabs>
           
           <div className="flex justify-center mt-8">
