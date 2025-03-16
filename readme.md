@@ -83,9 +83,9 @@ An engaging, interactive website dedicated to my **favorite IPL team**, serving 
 ---
 
 ## 📌 Future Enhancements
-✨ Integrate backend functionality for dynamic content.  
+✨ Integrate backend functionality for dynamic content.  ✅
 ✨ Enhance accessibility & SEO optimization.  
-✨ Implement additional interactive JavaScript features.  
+✨ Implement additional interactive JavaScript features.  ✅
 ✨ Add API integrations for live IPL match updates.  
 
 ---
