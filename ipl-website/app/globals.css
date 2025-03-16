@@ -124,3 +124,24 @@
     @apply bg-background text-foreground;
   }
 }
+.marquee-container {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 200px; /* Adjust width as needed */
+}
+
+.marquee-container span {
+  display: inline-block;
+  animation: marquee 10s linear infinite; /* Adjust speed (10s) and direction */
+  padding-left: 100%; /* Start off-screen */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
