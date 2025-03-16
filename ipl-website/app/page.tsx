@@ -13,62 +13,122 @@ import LatestNews from "@/components/latest-news"
 import TeamHighlights from "@/components/team-highlights"
 import FanPoll from "@/components/fan-poll"
 import { Twitter, Facebook, Instagram, Youtube , Trophy,} from "lucide-react"; 
-import { useState } from "react"; // Import useState
+import { useState } from "react"; 
 
 export default function Home() {
-  const [subscribed, setSubscribed] = useState(false); // State to track subscription success
+  const [subscribed, setSubscribed] = useState(false); 
 
   const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent default form submission
-    setSubscribed(true); // Set subscribed to true
-    setTimeout(() => setSubscribed(false), 5000); // Reset after 5 seconds
+    e.preventDefault(); 
+    setSubscribed(true); 
+    setTimeout(() => setSubscribed(false), 5000);
   };
 
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 text-white flex justify-center items-center">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Paltan, Welcome to Mumbai Indians Official Fan Hub
-                  </h1>
-                  <p className="max-w-[600px] text-gray-200 md:text-xl">
-                    Join the blue army and stay up-to-date with match schedules, player profiles, team news, and
-                    exclusive fan content.
-                  </p>
-                </div>
-                <div className="relative flex flex-col gap-2 min-[400px]:flex-row">
-    <Link href="/matches" passHref>
-      <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-        Match Schedule
-      </Button>
-    </Link>
-    <Button 
-      type="button"
-      variant="outline" 
-      size="lg" 
-      className="text-white border-white bg-[#1e40af] hover:bg-[#1e40af] hover:text-white"
-    >
-      Watch Highlights
-    </Button>
-  </div>
-</div>
-              <div className="mx-auto flex items-center justify-center">
-                <Image
-                  src="/mumbai-indians.webp"
-                  alt="Mumbai Indians Team"
-                  width={400}
-                  height={400}
-                  className="rounded-xl"
-                />
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-[#003087] via-[#1a2a6c] to-[#0a1845] text-white relative overflow-hidden">
+     
+      <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
+      
+     
+      <div className="absolute top-0 left-0 w-full h-2 bg-[#ffd700]"></div>
+      
+      <div className="container px-4 md:px-6 relative z-10">
+        <div className="grid gap-8 lg:grid-cols-[1fr_400px] lg:gap-12 items-center">
+          <div className="flex flex-col justify-center space-y-6">
+           
+            <div className="inline-block mb-2">
+              <span className="bg-[#ffd700] text-[#003087] text-sm font-bold px-4 py-1 rounded-full animate-pulse">
+                TATA WPL 2025 CHAMPION
+              </span>
+            </div>
+            
+            <div className="space-y-4">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                Paltan, Welcome to <span className="text-[#ffd700]">Mumbai Indians</span> Official Fan Hub
+              </h1>
+              <p className="max-w-[600px] text-blue-100 md:text-xl leading-relaxed">
+                Join the blue army and stay up-to-date with match schedules, player profiles, team news, and
+                exclusive fan content.
+              </p>
+            </div>
+            
+            <div className="relative flex flex-col gap-3 min-[400px]:flex-row mt-4">
+              <Link href="/matches" passHref>
+                <Button 
+                  size="lg" 
+                  className="bg-[#ffd700] text-[#003087] hover:bg-[#e6c200] font-bold shadow-lg"
+                >
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="20" 
+                    height="20" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    className="mr-2"
+                  >
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  Match Schedule
+                </Button>
+              </Link>
+              <Button 
+                type="button"
+                variant="outline" 
+                size="lg" 
+                className="text-white border-[#ffd700] bg-transparent hover:bg-[#ffd700] hover:text-[#003087] font-bold shadow-lg"
+              >
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="20" 
+                  height="20" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  className="mr-2"
+                >
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                Watch Highlights
+              </Button>
+            </div>
+            
+          
+            <div className="mt-8 pt-6 border-t border-blue-700 flex items-center gap-6">
+              <div className="flex -space-x-4">
+                <div className="w-10 h-10 rounded-full border-2 border-[#ffd700] bg-blue-800 flex items-center justify-center text-[#ffd700] font-bold">MI</div>
+                <div className="w-10 h-10 rounded-full border-2 border-[#ffd700] bg-blue-800 flex items-center justify-center text-[#ffd700] font-bold">5x</div>
+                <div className="w-10 h-10 rounded-full border-2 border-[#ffd700] bg-blue-800 flex items-center justify-center text-[#ffd700] font-bold">⭐</div>
               </div>
+              <p className="text-sm text-blue-100">Join <span className="font-bold">5 million+</span> fans worldwide supporting the 5-time champions</p>
             </div>
           </div>
-        </section>
+          
+          <div className="mx-auto flex items-center justify-center">
+          
+            <Image
+              src="/mumbai-indians.webp"
+              alt="Mumbai Indians Team"
+              width={400}
+              height={400}
+              className="rounded-xl shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
 
         <section className="w-full py-12 md:py-24 flex justify-center items-center">
           <div className="container px-4 md:px-6">
