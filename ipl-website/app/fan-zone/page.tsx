@@ -1,17 +1,122 @@
-import Link from "next/link"
-import Image from "next/image"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Heart, MessageSquare, Share2 } from "lucide-react"
-import FanPoll from "@/components/fan-poll"
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Heart, MessageSquare, Share2 } from "lucide-react";
+import FanPoll from "@/components/fan-poll";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Twitter, Facebook, Instagram, Youtube } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 
+type PhotoData = {
+  id: number;
+  image: string;
+  user: string;
+  likes: number;
+};
+
+// GalleryTabContent Component
+function GalleryTabContent() {
+  const [loading, setLoading] = useState(true);
+  const [fanPhotos, setFanPhotos] = useState<PhotoData[]>([]);
+  const initialized = useRef(false);
+
+  const initialPhotoData: PhotoData[] = [
+    { id: 1, image: "", user: "fan_2023", likes: 256 },
+    { id: 2, image: "", user: "blue_army", likes: 189 },
+    { id: 3, image: "", user: "mi_supporter", likes: 345 },
+    { id: 4, image: "", user: "cricket_lover", likes: 128 },
+    { id: 5, image: "", user: "wankhede_fan", likes: 275 },
+    { id: 6, image: "", user: "mi_forever", likes: 310 },
+  ];
+
+  useEffect(() => {
+    if (initialized.current) return;
+    initialized.current = true;
+
+    const updatedPhotos = initialPhotoData.map((photo, index) => {
+      const imageName = `fangallery_${index + 1}.${getFileExtension(index + 1)}`;
+      const publicUrl = `${supabaseUrl}/storage/v1/object/public/fan-gallery/${imageName}`;
+
+      return {
+        ...photo,
+        image: publicUrl,
+      };
+    });
+
+    setFanPhotos(updatedPhotos);
+    setLoading(false);
+  }, []);
+
+  function getFileExtension(index: number): string {
+    switch (index) {
+      case 1:
+        return "jpg";
+      case 2:
+        return "webp";
+      case 3:
+        return "jpeg";
+      case 4:
+        return "webp";
+      case 5:
+        return "avif";
+      case 6:
+        return "jpeg";
+      default:
+        return "jpg";
+    }
+  }
+
+  return (
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h2 className="text-2xl font-bold">Fan Photos</h2>
+        <Button>Upload Your Photo</Button>
+      </div>
+      {loading ? (
+        <div className="flex justify-center items-center h-64">
+          <div className="text-center">
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
+            <p className="mt-4">Loading gallery images...</p>
+          </div>
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {fanPhotos.map((photo) => (
+            <div key={photo.id} className="group relative rounded-lg overflow-hidden">
+              <img
+        src={photo.image || "/placeholder.svg"}
+        alt={`Fan photo by ${photo.user}`}
+        width={300}
+        height={300}
+        className="w-full object-cover aspect-square"
+      />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
+                <div className="text-white font-medium">@{photo.user}</div>
+                <div className="flex items-center text-white text-sm">
+                  <Heart className="h-4 w-4 mr-1 fill-white" />
+                  {photo.likes}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      <div className="flex justify-center">
+        <Button variant="outline">Load More Photos</Button>
+      </div>
+    </div>
+  );
+}
+
+// Main FanZonePage Component
 export default function FanZonePage() {
-  // Sample social media posts
   const socialPosts = [
     {
       id: 1,
@@ -53,27 +158,15 @@ export default function FanZonePage() {
       shares: 4532,
       time: "4 days ago",
     },
-  ]
+  ];
 
-  // Sample fan photos
-  const fanPhotos = [
-    { id: 1, image: "/fangallery_1.jpg?height=300&width=300", user: "fan_2023", likes: 256 },
-    { id: 2, image: "/fangallery_2.webp?height=300&width=300", user: "blue_army", likes: 189 },
-    { id: 3, image: "/fangallery_3.jpeg?height=300&width=300", user: "mi_supporter", likes: 345 },
-    { id: 4, image: "/fangallery_4.webp?height=300&width=300", user: "cricket_lover", likes: 128 },
-    { id: 5, image: "/fangallery_5.avif?height=300&width=300", user: "wankhede_fan", likes: 275 },
-    { id: 6, image: "/fangallery_6.jpeg?height=300&width=300", user: "mi_forever", likes: 310 },
-  ]
-
-  // Sample forum topics
   const forumTopics = [
     { id: 1, title: "Match Analysis: MI vs CSK", replies: 78, views: 1245, lastActive: "2 hours ago" },
     { id: 2, title: "Who should be our next captain?", replies: 156, views: 3421, lastActive: "5 hours ago" },
     { id: 3, title: "Best MI moments of all time", replies: 92, views: 1876, lastActive: "1 day ago" },
     { id: 4, title: "Auction wishlist for next season", replies: 124, views: 2345, lastActive: "3 days ago" },
-  ]
+  ];
 
-  // Sample fan contests
   const fanContests = [
     {
       id: 1,
@@ -91,7 +184,7 @@ export default function FanZonePage() {
       prize: "Meet & Greet with MI players",
       participants: 567,
     },
-  ]
+  ];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -196,31 +289,31 @@ export default function FanZonePage() {
                       </CardContent>
                     </Card>
                     <Card>
-  <CardHeader>
-    <CardTitle>Follow Mumbai Indians</CardTitle>
-  </CardHeader>
-  <CardContent>
-    <div className="grid grid-cols-4 gap-4">
-      {[
-        { platform: "twitter", icon: <Twitter className="h-6 w-6" /> },
-        { platform: "facebook", icon: <Facebook className="h-6 w-6" /> },
-        { platform: "instagram", icon: <Instagram className="h-6 w-6" /> },
-        { platform: "youtube", icon: <Youtube className="h-6 w-6" /> },
-      ].map(({ platform, icon }) => (
-        <Link
-          key={platform}
-          href={`https://${platform}.com/mipaltan`}
-          className="flex flex-col items-center gap-2"
-        >
-          <div className="rounded-full bg-muted h-12 w-12 flex items-center justify-center hover:bg-blue-100 transition-colors">
-            {icon}
-          </div>
-          <span className="text-xs capitalize">{platform}</span>
-        </Link>
-      ))}
-    </div>
-  </CardContent>
-</Card>
+                      <CardHeader>
+                        <CardTitle>Follow Mumbai Indians</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="grid grid-cols-4 gap-4">
+                          {[
+                            { platform: "twitter", icon: <Twitter className="h-6 w-6" /> },
+                            { platform: "facebook", icon: <Facebook className="h-6 w-6" /> },
+                            { platform: "instagram", icon: <Instagram className="h-6 w-6" /> },
+                            { platform: "youtube", icon: <Youtube className="h-6 w-6" /> },
+                          ].map(({ platform, icon }) => (
+                            <Link
+                              key={platform}
+                              href={`https://${platform}.com/mipaltan`}
+                              className="flex flex-col items-center gap-2"
+                            >
+                              <div className="rounded-full bg-muted h-12 w-12 flex items-center justify-center hover:bg-blue-100 transition-colors">
+                                {icon}
+                              </div>
+                              <span className="text-xs capitalize">{platform}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
                     <Card>
                       <CardHeader>
                         <CardTitle>Official Hashtags</CardTitle>
@@ -244,35 +337,7 @@ export default function FanZonePage() {
               </TabsContent>
 
               <TabsContent value="gallery" className="mt-0">
-                <div className="space-y-6">
-                  <div className="flex justify-between items-center">
-                    <h2 className="text-2xl font-bold">Fan Photos</h2>
-                    <Button>Upload Your Photo</Button>
-                  </div>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {fanPhotos.map((photo) => (
-                      <div key={photo.id} className="group relative rounded-lg overflow-hidden">
-                        <Image
-                          src={photo.image || "/placeholder.svg"}
-                          alt={`Fan photo by ${photo.user}`}
-                          width={300}
-                          height={300}
-                          className="w-full object-cover aspect-square"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
-                          <div className="text-white font-medium">@{photo.user}</div>
-                          <div className="flex items-center text-white text-sm">
-                            <Heart className="h-4 w-4 mr-1 fill-white" />
-                            {photo.likes}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex justify-center">
-                    <Button variant="outline">Load More Photos</Button>
-                  </div>
-                </div>
+                <GalleryTabContent />
               </TabsContent>
 
               <TabsContent value="forum" className="mt-0">
@@ -394,9 +459,9 @@ export default function FanZonePage() {
                             <h3 className="font-bold">MI Memorable Moments Photo Contest</h3>
                             <p className="text-sm text-muted-foreground mb-2">Winner: @blue_army</p>
                             <p>
-                           @blue_army&apos;s fantastic photo capturing the IPL 2025 final celebration moment won our
-                           hearts and the grand prize!
-                          </p>
+                              @blue_army&apos;s fantastic photo capturing the IPL 2025 final celebration moment won our
+                              hearts and the grand prize!
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -410,6 +475,5 @@ export default function FanZonePage() {
       </main>
       <Footer />
     </div>
-  )
+  );
 }
-
