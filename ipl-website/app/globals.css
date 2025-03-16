@@ -128,13 +128,13 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  width: 200px; /* Adjust width as needed */
+  width: 200px; 
 }
 
 .marquee-container span {
   display: inline-block;
-  animation: marquee 10s linear infinite; /* Adjust speed (10s) and direction */
-  padding-left: 100%; /* Start off-screen */
+  animation: marquee 10s linear infinite; 
+  padding-left: 100%; 
 }
 
 @keyframes marquee {
